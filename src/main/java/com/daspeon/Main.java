@@ -40,37 +40,37 @@ public class Main {
         switch (option) {
             case 1:
                 currency = currencyRequest.getRates("USD");
-                rate = currency.convertRate( "BRL");
+                rate = currency.convertRate("BRL");
 
                 System.out.printf("U$ 1.00 corresponde a R$ %.2f", rate);
                 break;
             case 2:
                 currency = currencyRequest.getRates("EUR");
-                rate = currency.convertRate( "BRL");
+                rate = currency.convertRate("BRL");
 
                 System.out.printf("€1 corresponde a R$ %.2f", rate);
                 break;
             case 3:
                 currency = currencyRequest.getRates("BRL");
-                rate = currency.convertRate( "JPY");
+                rate = currency.convertRate("JPY");
 
                 System.out.printf("R$ 1 corresponde a ¥ %.2f", rate);
                 break;
             case 4:
                 currency = currencyRequest.getRates("BRL");
-                rate = currency.convertRate( "GBP");
+                rate = currency.convertRate("GBP");
 
                 System.out.printf("R$ 1 corresponde a £ %.2f", rate);
                 break;
             case 5:
                 currency = currencyRequest.getRates("USD");
-                rate = currency.convertRate( "JPY");
+                rate = currency.convertRate("JPY");
 
                 System.out.printf("U$ 1 corresponde a ¥ %.2f", rate);
                 break;
             case 6:
                 currency = currencyRequest.getRates("BRL");
-                rate = currency.convertRate( "ARS");
+                rate = currency.convertRate("ARS");
 
                 System.out.printf("R$ 1 corresponde a $ %.2f", rate);
                 break;
