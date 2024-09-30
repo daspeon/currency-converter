@@ -12,14 +12,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class CurrencyRequest {
+public class CurrencyConverter {
 
     private String baseURL = "https://v6.exchangerate-api.com/v6/02efdaa27a877cca8389fe73/latest/";
 
-    public Currency getRates(String currencyCode) throws IOException, InterruptedException {
+
+    public double convertCurrency(String fromCurrency, String toCurrency) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(baseURL + currencyCode))
+                .uri(URI.create(baseURL + fromCurrency))
                 .build();
 
         HttpResponse<String> response = client
@@ -30,6 +31,6 @@ public class CurrencyRequest {
         CurrencyDTO currencyDTO = gson.fromJson(response.body(), CurrencyDTO.class);
         Currency currency = new Currency(currencyDTO);
 
-        return currency;
+        return currency.convertRate(toCurrency);
     }
 }
