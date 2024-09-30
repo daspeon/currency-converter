@@ -1,7 +1,6 @@
 package com.daspeon;
 
-import com.daspeon.application.CurrencyRequest;
-import com.daspeon.models.Currency;
+import com.daspeon.application.CurrencyConverter;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,22 +10,20 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        CurrencyRequest currencyRequest = new CurrencyRequest();
+        CurrencyConverter currencyConverter = new CurrencyConverter();
 
-        Currency currency;
         Double rate = 0.00;
-
 
         System.out.println("""
                    *******************************
                    *     CONVERSOR DE MOEDAS     *
                    *******************************
                    
-                    1 - Dólar para Real
-                    2 - Euro para Dólar
-                    3 - Real para Iene
-                    4 - Real para Libra Esterlina
-                    5 - Dólar para Iene
+                    1 - Dólar Americano para Real
+                    2 - Dólar para Peso Chileno 
+                    3 - Real para Peso Chileno
+                    4 - Real para Boliviano
+                    5 - Dólar para Peso Colombiano
                     6 - Real para Peso Argentino
                    
                    ******************************
@@ -39,38 +36,32 @@ public class Main {
 
         switch (option) {
             case 1:
-                currency = currencyRequest.getRates("USD");
-                rate = currency.convertRate("BRL");
+                rate = currencyConverter.convertCurrency("USD", "BRL");
 
-                System.out.printf("U$ 1.00 corresponde a R$ %.2f", rate);
+                System.out.printf("US$ 1 corresponde a R$ %.2f", rate);
                 break;
             case 2:
-                currency = currencyRequest.getRates("EUR");
-                rate = currency.convertRate("BRL");
+                rate = currencyConverter.convertCurrency("USD", "CLP");
 
-                System.out.printf("€1 corresponde a R$ %.2f", rate);
+                System.out.printf("US$ 1 corresponde a $ %.2f", rate);
                 break;
             case 3:
-                currency = currencyRequest.getRates("BRL");
-                rate = currency.convertRate("JPY");
+                rate = currencyConverter.convertCurrency("BRL", "CLP");
 
-                System.out.printf("R$ 1 corresponde a ¥ %.2f", rate);
+                System.out.printf("R$ 1 corresponde a $ %.2f", rate);
                 break;
             case 4:
-                currency = currencyRequest.getRates("BRL");
-                rate = currency.convertRate("GBP");
+                rate = currencyConverter.convertCurrency("BRL", "BOB");
 
-                System.out.printf("R$ 1 corresponde a £ %.2f", rate);
+                System.out.printf("R$ 1 corresponde a $b %.2f", rate);
                 break;
             case 5:
-                currency = currencyRequest.getRates("USD");
-                rate = currency.convertRate("JPY");
+                rate = currencyConverter.convertCurrency("USD", "COP");
 
-                System.out.printf("U$ 1 corresponde a ¥ %.2f", rate);
+                System.out.printf("U$ 1 corresponde a $ %.2f", rate);
                 break;
             case 6:
-                currency = currencyRequest.getRates("BRL");
-                rate = currency.convertRate("ARS");
+                rate = currencyConverter.convertCurrency("BRL", "ARS");
 
                 System.out.printf("R$ 1 corresponde a $ %.2f", rate);
                 break;
