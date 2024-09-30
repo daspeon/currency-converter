@@ -14,7 +14,11 @@ public class Main {
 
         Double rate = 0.00;
 
-        System.out.println("""
+        boolean exit = false;
+
+        while(!exit) {
+
+            System.out.println("""
                    *******************************
                    *     CONVERSOR DE MOEDAS     *
                    *******************************
@@ -25,50 +29,58 @@ public class Main {
                     4 - Real para Boliviano
                     5 - Dólar para Peso Colombiano
                     6 - Real para Peso Argentino
+                    0 - Sair
                    
                    ******************************
                    """);
 
-        System.out.print("Digite uma opção: ");
-        int option = scanner.nextInt();
+            System.out.print("Digite uma opção: ");
+            int option = scanner.nextInt();
 
-        System.out.println();
+            switch (option) {
+                case 1:
+                    rate = currencyConverter.convertCurrency("USD", "BRL");
 
-        switch (option) {
-            case 1:
-                rate = currencyConverter.convertCurrency("USD", "BRL");
+                    System.out.printf("US$ 1 corresponde a R$ %.2f", rate);
+                    break;
+                case 2:
+                    rate = currencyConverter.convertCurrency("USD", "CLP");
 
-                System.out.printf("US$ 1 corresponde a R$ %.2f", rate);
-                break;
-            case 2:
-                rate = currencyConverter.convertCurrency("USD", "CLP");
+                    System.out.printf("US$ 1 corresponde a $ %.2f", rate);
+                    break;
+                case 3:
+                    rate = currencyConverter.convertCurrency("BRL", "CLP");
 
-                System.out.printf("US$ 1 corresponde a $ %.2f", rate);
-                break;
-            case 3:
-                rate = currencyConverter.convertCurrency("BRL", "CLP");
+                    System.out.printf("R$ 1 corresponde a $ %.2f", rate);
+                    break;
+                case 4:
+                    rate = currencyConverter.convertCurrency("BRL", "BOB");
 
-                System.out.printf("R$ 1 corresponde a $ %.2f", rate);
-                break;
-            case 4:
-                rate = currencyConverter.convertCurrency("BRL", "BOB");
+                    System.out.printf("R$ 1 corresponde a $b %.2f", rate);
+                    break;
+                case 5:
+                    rate = currencyConverter.convertCurrency("USD", "COP");
 
-                System.out.printf("R$ 1 corresponde a $b %.2f", rate);
-                break;
-            case 5:
-                rate = currencyConverter.convertCurrency("USD", "COP");
+                    System.out.printf("U$ 1 corresponde a $ %.2f", rate);
+                    break;
+                case 6:
+                    rate = currencyConverter.convertCurrency("BRL", "ARS");
 
-                System.out.printf("U$ 1 corresponde a $ %.2f", rate);
-                break;
-            case 6:
-                rate = currencyConverter.convertCurrency("BRL", "ARS");
+                    System.out.printf("R$ 1 corresponde a $ %.2f", rate);
+                    break;
+                case 0:
+                    System.out.printf("Obrigado por usar nosso conversor de moedas");
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida. Tente novamente!");
+                    break;
+            }
 
-                System.out.printf("R$ 1 corresponde a $ %.2f", rate);
-                break;
-            default:
-                System.out.println("Opção inválida!");
-                break;
+            System.out.println("");
         }
+
+
 
         scanner.close();
     }
