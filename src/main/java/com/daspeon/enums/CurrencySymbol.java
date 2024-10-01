@@ -6,7 +6,7 @@ public enum CurrencySymbol {
     CLP("$"),
     BOB("$b"),
     COP("COL$"),
-    ARG("$");
+    ARS("$");
 
     private String symbol;
 
