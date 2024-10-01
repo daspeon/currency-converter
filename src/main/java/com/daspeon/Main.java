@@ -1,5 +1,6 @@
 package com.daspeon;
 
+import com.daspeon.application.CommandLineInterface;
 import com.daspeon.application.CurrencyConverter;
 
 import java.io.IOException;
@@ -10,9 +11,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        CurrencyConverter currencyConverter = new CurrencyConverter();
-
-        Double rate = 0.00;
+        CommandLineInterface commandLineInterface = new CommandLineInterface();
 
         boolean exit = false;
 
@@ -23,12 +22,7 @@ public class Main {
                    *     CONVERSOR DE MOEDAS     *
                    *******************************
                    
-                    1 - Dólar Americano para Real
-                    2 - Dólar para Peso Chileno 
-                    3 - Real para Peso Chileno
-                    4 - Real para Boliviano
-                    5 - Dólar para Peso Colombiano
-                    6 - Real para Peso Argentino
+                    1 - Converter moedas
                     0 - Sair
                    
                    ******************************
@@ -39,34 +33,7 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    rate = currencyConverter.convertCurrency("USD", "BRL");
-
-                    System.out.printf("US$ 1 corresponde a R$ %.2f", rate);
-                    break;
-                case 2:
-                    rate = currencyConverter.convertCurrency("USD", "CLP");
-
-                    System.out.printf("US$ 1 corresponde a $ %.2f", rate);
-                    break;
-                case 3:
-                    rate = currencyConverter.convertCurrency("BRL", "CLP");
-
-                    System.out.printf("R$ 1 corresponde a $ %.2f", rate);
-                    break;
-                case 4:
-                    rate = currencyConverter.convertCurrency("BRL", "BOB");
-
-                    System.out.printf("R$ 1 corresponde a $b %.2f", rate);
-                    break;
-                case 5:
-                    rate = currencyConverter.convertCurrency("USD", "COP");
-
-                    System.out.printf("U$ 1 corresponde a $ %.2f", rate);
-                    break;
-                case 6:
-                    rate = currencyConverter.convertCurrency("BRL", "ARS");
-
-                    System.out.printf("R$ 1 corresponde a $ %.2f", rate);
+                    commandLineInterface.showConvertionOptions();
                     break;
                 case 0:
                     System.out.printf("Obrigado por usar nosso conversor de moedas");
@@ -76,11 +43,7 @@ public class Main {
                     System.out.println("Opção inválida. Tente novamente!");
                     break;
             }
-
-            System.out.println("");
         }
-
-
 
         scanner.close();
     }
