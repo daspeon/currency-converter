@@ -75,7 +75,8 @@ public class CommandLineInterface {
                 printConvertion(rate, "BRL", "ARS");
                 break;
             default:
-                System.out.println("\t\tOpção inválida. Tente novamente!");
+                System.out.println("Opção inválida. Tente novamente!");
+                pressAnyKey();
                 break;
         }
     }
@@ -94,9 +95,19 @@ public class CommandLineInterface {
         System.out.printf("\t\t%s 1 corresponde a %s %.2f\n", CurrencySymbol.getCurrencySymbol(toCurrency), CurrencySymbol.getCurrencySymbol(fromCurrency), rate);
 
         System.out.println("------------------------------------------");
+
+        pressAnyKey();
     }
 
-    private void clear() {
+    private void pressAnyKey() {
+        System.out.print("\nPressione qualquer tecla para continuar...");
+        scanner.nextLine();
+        scanner.nextLine();
+
+        System.out.println(" ");
+    }
+
+    public void clear() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
