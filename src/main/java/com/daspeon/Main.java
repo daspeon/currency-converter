@@ -21,10 +21,8 @@ public class Main {
                    *******************************
                    *     CONVERSOR DE MOEDAS     *
                    *******************************
-                   
                     1 - Converter moedas
                     0 - Sair
-                   
                    ******************************
                    """);
 
@@ -36,7 +34,7 @@ public class Main {
                     commandLineInterface.showConvertionOptions();
                     break;
                 case 0:
-                    System.out.printf("Obrigado por usar nosso conversor de moedas");
+                    commandLineInterface.clear();
                     exit = true;
                     break;
                 default:
