@@ -24,15 +24,13 @@ public class CommandLineInterface {
                    *******************************
                    *     CONVERSOR DE MOEDAS     *
                    *******************************
-                   
                     1 - Dólar Americano para Real
                     2 - Dólar para Peso Chileno 
                     3 - Real para Peso Chileno
                     4 - Real para Boliviano
                     5 - Dólar para Peso Colombiano
                     6 - Real para Peso Argentino
-                    0 - Voltar ao menu inicial
-                   
+                    0 - Voltar ao Menu Inicial                   
                    ******************************
                    """);
 
@@ -90,11 +88,9 @@ public class CommandLineInterface {
                 ------------------------------------------
                 - DADOS DA CONVERSÃO - %s -
                 ------------------------------------------
-                """, formattedTime);
-
-        System.out.printf("\t\t%s 1 corresponde a %s %.2f\n", CurrencySymbol.getCurrencySymbol(toCurrency), CurrencySymbol.getCurrencySymbol(fromCurrency), rate);
-
-        System.out.println("------------------------------------------");
+                \t%s 1 corresponde a %s %.2f
+                ------------------------------------------
+                """, formattedTime, CurrencySymbol.getCurrencySymbol(toCurrency), CurrencySymbol.getCurrencySymbol(fromCurrency), rate);
 
         pressAnyKey();
     }
