@@ -42,14 +42,8 @@ $ mvn exec:java
 *******************************
 *     CONVERSOR DE MOEDAS     *
 *******************************
-                   
-1 - Dólar para Real
-2 - Euro para Dólar
-3 - Real para Iene
-4 - Real para Libra Esterlina
-5 - Dólar para Iene
-6 - Real para Peso Argentino
-                   
+1 - Converter moedas
+0 - Sair
 ******************************
 ```
 
