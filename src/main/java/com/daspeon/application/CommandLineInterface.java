@@ -11,72 +11,35 @@ public class CommandLineInterface {
 
     Scanner scanner = new Scanner(System.in);
 
-    private CurrencyConverter currencyConverter = new CurrencyConverter();
+    private final CurrencyConverter currencyConverter = new CurrencyConverter();
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy, HH:mm");
 
     Double rate = 0.00;
 
     public void showConvertionOptions() throws IOException, InterruptedException {
-        boolean goBackToMainMenu = false;
+        String[] currencyCodes = {"BRL", "USD", "CLP", "BOB", "COP", "ARS"};
 
-        while(!goBackToMainMenu) {
             System.out.println("""
                    *******************************
-                   *     CONVERSOR DE MOEDAS     *
+                   *     MOEDAS DISPONÍVEIS      *
                    *******************************
-                    1 - Dólar Americano para Real
-                    2 - Dólar para Peso Chileno 
-                    3 - Real para Peso Chileno
-                    4 - Real para Boliviano
-                    5 - Dólar para Peso Colombiano
-                    6 - Real para Peso Argentino
-                    0 - Voltar ao Menu Inicial                   
+                    1. Real Brasileiro - BRL
+                    2. Dólar Americano - USD
+                    3. Peso Chileno - CLP
+                    4. Boliviano - BOB
+                    5. Peso Colombiano - COP
+                    6. Peso Argentino - ARS
                    ******************************
                    """);
 
-            System.out.print("Digite uma opção: ");
-            int option = scanner.nextInt();
+            int fromCurrencyIndex = isValidOption("Digite a opção que será usada como moeda base: ");
+            int toCurrencyIndex = isValidOption("Digite a opção da moeda para qual deseja converter: ");
 
-            if (option == 0 ) {
-                goBackToMainMenu = true;
-                return;
-            };
+            String fromCurrency = currencyCodes[fromCurrencyIndex - 1];
+            String toCurrency = currencyCodes[toCurrencyIndex - 1];
+            rate = currencyConverter.convertCurrency(fromCurrency, toCurrency);
+            printConvertion(rate, fromCurrency, toCurrency);
 
-            callCurrencyConverter(option);
-        }
-    }
-
-    private void callCurrencyConverter(int option) throws IOException, InterruptedException {
-        switch (option) {
-            case 1:
-                rate = currencyConverter.convertCurrency("USD", "BRL");
-                printConvertion(rate, "USD", "BRL");
-                break;
-            case 2:
-                rate = currencyConverter.convertCurrency("USD", "CLP");
-                printConvertion(rate, "USD", "CLP");
-                break;
-            case 3:
-                rate = currencyConverter.convertCurrency("BRL", "CLP");
-                printConvertion(rate, "BRL", "CLP");
-                break;
-            case 4:
-                rate = currencyConverter.convertCurrency("BRL", "BOB");
-                printConvertion(rate, "BRL", "BOB");
-                break;
-            case 5:
-                rate = currencyConverter.convertCurrency("USD", "COP");
-                printConvertion(rate, "USD", "COP");
-                break;
-            case 6:
-                rate = currencyConverter.convertCurrency("BRL", "ARS");
-                printConvertion(rate, "BRL", "ARS");
-                break;
-            default:
-                System.out.println("Opção inválida. Tente novamente!");
-                pressAnyKey();
-                break;
-        }
     }
 
     private void printConvertion(Double rate, String toCurrency, String fromCurrency) {
@@ -94,6 +57,21 @@ public class CommandLineInterface {
 
         pressAnyKey();
     }
+
+    private Integer isValidOption(String message) {
+        while (true) {
+            System.out.print(message);
+            int option = scanner.nextInt();
+
+            if (option >= 1 && option <= 6) {
+                return option;
+            }
+
+            System.out.println("Opção inválida. Tente novamente!");
+
+        }
+    }
+
 
     private void pressAnyKey() {
         System.out.print("\nPressione qualquer tecla para continuar...");
