@@ -19,26 +19,26 @@ public class CommandLineInterface {
     public void showConvertionOptions() throws IOException, InterruptedException {
         String[] currencyCodes = {"BRL", "USD", "CLP", "BOB", "COP", "ARS"};
 
-            System.out.println("""
-                   *******************************
-                   *     MOEDAS DISPONÍVEIS      *
-                   *******************************
-                    1. Real Brasileiro - BRL
-                    2. Dólar Americano - USD
-                    3. Peso Chileno - CLP
-                    4. Boliviano - BOB
-                    5. Peso Colombiano - COP
-                    6. Peso Argentino - ARS
-                   ******************************
-                   """);
+        System.out.println("""
+                *******************************
+                *     MOEDAS DISPONÍVEIS      *
+                *******************************
+                 1. Real Brasileiro - BRL
+                 2. Dólar Americano - USD
+                 3. Peso Chileno - CLP
+                 4. Boliviano - BOB
+                 5. Peso Colombiano - COP
+                 6. Peso Argentino - ARS
+                ******************************
+                """);
 
-            int fromCurrencyIndex = isValidOption("Digite a opção que será usada como moeda base: ");
-            int toCurrencyIndex = isValidOption("Digite a opção da moeda para qual deseja converter: ");
+        int fromCurrencyIndex = isValidOption("Digite a opção que será usada como moeda base: ");
+        int toCurrencyIndex = isValidOption("Digite a opção da moeda para qual deseja converter: ");
 
-            String fromCurrency = currencyCodes[fromCurrencyIndex - 1];
-            String toCurrency = currencyCodes[toCurrencyIndex - 1];
-            rate = currencyConverter.convertCurrency(fromCurrency, toCurrency);
-            printConvertion(rate, fromCurrency, toCurrency);
+        String fromCurrency = currencyCodes[fromCurrencyIndex - 1];
+        String toCurrency = currencyCodes[toCurrencyIndex - 1];
+        rate = currencyConverter.convertCurrency(fromCurrency, toCurrency);
+        printConvertion(rate, fromCurrency, toCurrency);
 
     }
 
